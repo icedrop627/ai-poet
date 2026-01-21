@@ -5,13 +5,14 @@ import streamlit as st
 import os
 from langchain_openai import ChatOpenAI
 
-# Streamlit Cloud Secrets 자동 주입됨
-# os.environ["OPENAI_API_KEY"] 는 이미 설정된 상태
+# Streamlit Secrets에서 API 키 가져오기
+openai_api_key = st.secrets.get("OPENAI_API_KEY")
 
 #ChatOpenAI 초기화
 llm = ChatOpenAI(
     model="gpt-4o-mini",   # 또는 사용 중인 모델
-    temperature=0.7
+    temperature=0.7,
+    api_key=openai_api_key
 )
 
 
