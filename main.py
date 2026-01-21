@@ -2,12 +2,17 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import streamlit as st
-#from dotenv import load_dotenv
-#load_dotenv()
+import os
+from langchain_openai import ChatOpenAI
 
+# Streamlit Cloud Secrets 자동 주입됨
+# os.environ["OPENAI_API_KEY"] 는 이미 설정된 상태
 
 #ChatOpenAI 초기화
-llm = ChatOpenAI()
+llm = ChatOpenAI(
+    model="gpt-4o-mini",   # 또는 사용 중인 모델
+    temperature=0.7
+)
 
 
 #프롬프트 템플릿 생성
